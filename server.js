@@ -1,10 +1,10 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 app.get("/", (req,res) =>{
 
-res.send("Subscribe to this channel");
+res.send('Subscribe to this channel at PORT' + PORT);
 
 
 
@@ -14,6 +14,6 @@ res.send("Subscribe to this channel");
 
 );
 
-app.listen(port, () => {
-    console.log("Server started")
+app.listen(PORT, () => {
+    console.log('Server started at PORT' + PORT)
 });
