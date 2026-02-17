@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 
-app.use(express.json());
+
 
 const prisma = new PrismaClient();
 const allowedOrigins = [
@@ -20,7 +20,7 @@ const allowedOrigins = [
   "https://ecommerce-sepia-iota-43.vercel.app",
   "http://192.168.161.140:3000","http://192.168.161.140:5173",
   "http://192.168.161.140:5173", "http://localhost:3000",
-  "http://localhost:5173"
+  "http://localhost:5173",
 ].filter(Boolean); // removes undefined values
 
 app.use(
@@ -37,16 +37,10 @@ app.use(
       return callback(new Error("Not allowed by CORS"));
     },
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: [
-      "Content-Type",
-      "Authorization",
-      "X-Requested-With",
-      "Apollo-Require-Preflight",
-    ],
+    
   })
 );
-
+app.use(express.json());
  async function connectDB()  {
   try {
     await prisma.$connect();
